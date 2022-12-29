@@ -2,22 +2,34 @@ import therapistData from './data.js'
 import Therapist from './Therapist.js'
 import User from './Profile.js'
 
-
 let therapistArray = ["therapist01", "therapist02", "therapist03", "therapist04", "therapist05"]
-
+let matches = therapistData[therapistArray[2]]
+let likedArray = []
+let dislikedArray = []
 
 let newNew = 0
+let therapist = thePer(0)
+let user = getUserProfileData()
 
 function thePer() {
-
     let therapyPerson = therapistData[therapistArray[newNew]]
-
-
     return therapyPerson ? new Therapist(therapyPerson) : {}
+}
 
+function getUserProfileData() {
+    return new User(therapistData.userProfile)
 }
 
 function like() {
+    likedArray.push(therapist)
+
+    if (JSON.stringify(therapist) === JSON.stringify(matches)) {
+        console.log("You have a match")
+    }
+
+    console.log(therapist)
+    console.log(matches)
+
     if (therapistArray.length > 0) {
         newNew++
         therapist = thePer()
@@ -25,14 +37,18 @@ function like() {
     }
 }
 
-function render() {
-    document.getElementById('therapist').innerHTML = therapist.getTherapistHtml()
+
+
+function dislike() {
+    dislikedArray.push(therapist)
+    console.log(likedArray)
+    console.log(dislikedArray)
+    if (therapistArray.length > 0) {
+        newNew++
+        therapist = thePer()
+        render()
+    }
 }
-
-let therapist = thePer(0)
-render()
-
-document.getElementById('like').addEventListener('click', like)
 
 function goBack() {
     if (therapistArray.length > 0) {
@@ -42,111 +58,41 @@ function goBack() {
     }
 }
 
+function profile() {
+    document.getElementById('therapist').style.display = 'none'
+    document.getElementById('thinder-profile').style.display = 'initial'
+    renderUser()
+}
+
+function therapists() {
+    document.getElementById('thinder-profile').style.display = 'none'
+    document.getElementById('therapist').style.display = 'initial'
+    render()
+}
+
+function messages() {
+    document.getElementById('therapist').style.display = 'none'
+    document.getElementById('thinder-profile').style.display = 'none'
+    document.getElementById('thinder-messages').style.display = 'initial'
+    renderMessages()
+}
+
+
+function render() {
+    document.getElementById('therapist').innerHTML = therapist.getTherapistHtml()
+}
+function renderUser() {
+    document.getElementById('thinder-profile').innerHTML = user.getUserProfileHtml()
+}
+function renderMessages() {
+    document.getElementById('thinder-messages').innerHTML = messages.getMessagesHtml()
+}
+
+render()
+
+document.getElementById('like').addEventListener('click', like)
+document.getElementById('user-profile').addEventListener("click", profile)
+document.getElementById('return-to-main').addEventListener('click', therapists)
+document.getElementById('message-icon').addEventListener('click', messages)
+document.getElementById('dislike').addEventListener('click', dislike)
 document.getElementById('go-back-once').addEventListener('click', goBack)
-
-// document.getElementById('therapy').innerHTML = .getTherapistHtml()
-
-// // function getUserProfileData() {
-
-// //     const userProfileData = therapistData[0]
-// //     return new UserProfile(userProfileData)
-
-// // }
-
-// // function profile() {
-// //     user = getUserProfileData()
-// //     renderUserProfile()
-// // }
-
-// // function renderUserProfile() {
-// //     document.getElementById('thinder-profile').innerHTML = user.getUserProfileHtml()
-// // }
-
-// // document.getElementById('user-profile').addEventListener('click', profile)
-
-// // let user = getUserProfileData()
-// // renderUserProfile()
-
-// function getUserProfileData() {
-//     return new User(therapistData.userProfile)
-// }
-
-// function renderUser() {
-
-//     document.getElementById('thinder-profile').innerHTML = user.getUserProfileHtml()
-// }
-
-// let user = getUserProfileData()
-// renderUser()
-
-// function profile() {
-//     document.getElementById('therapist').style.display = 'none'
-
-//     document.getElementById('thinder-profile').style.display = 'initial'
-
-//     renderUser()
-// }
-
-
-
-
-// // let nextTherapistData
-// // function getNextTherapist() {
-// //     for (let i = 0; therapistArray.length > 0; i++) {
-// //         nextTherapistData = therapistData[therapistArray[i]]
-// //     }
-// //     return nextTherapistData ? new Therapist(nextTherapistData) : {}
-// // }
-
-
-// // function nextTherapist() {
-
-// // }
-
-// // function like() {
-// //     if (therapistArray.length > 0) {
-// //         therapist = nextTherapist()
-// //         render()
-// //     }
-// // }
-
-
-
-// // // function render() {
-
-// // //     document.getElementById('therapist').innerHTML = therapist.getTherapistHtml()
-// // // }
-
-// // function therapists() {
-// //     document.getElementById('thinder-profile').style.display = 'none'
-
-// //     document.getElementById('therapist').style.display = 'initial'
-
-// //     render()
-// // }
-
-
-
-// // let therapist = nextTherapist()
-// // render()
-
-
-// function messages() {
-//     document.getElementById('therapist').style.display = 'none'
-
-//     document.getElementById('thinder-profile').style.display = 'none'
-
-//     document.getElementById('thinder-messages').style.display = 'initial'
-
-// }
-
-// function renderMessages() {
-//     document.getElementById('thinder-messages').innerHTML = messages.getMessagesHtml()
-// }
-
-// document.getElementById('user-profile').addEventListener("click", profile)
-// document.getElementById('return-to-main').addEventListener('click', therapists)
-// document.getElementById('like').addEventListener('click', like)
-// document.getElementById('message-icon').addEventListener('click', messages)
-// document.getElementById('dislike').addEventListener('click', dislike)
-// document.getElementById('go-back-once').addEventListener('click', goBack)
