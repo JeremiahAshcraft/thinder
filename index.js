@@ -3,11 +3,12 @@ import Therapist from './Therapist.js'
 import User from './Profile.js'
 
 let therapistArray = ["therapist01", "therapist02", "therapist03", "therapist04", "therapist05"]
-let matches = therapistData[therapistArray[2]]
+let matchesArray = [therapistData.therapist03]
 let likedArray = []
 let dislikedArray = []
 
 let newNew = 0
+let matches = 0
 let therapist = thePer(0)
 let user = getUserProfileData()
 
@@ -21,32 +22,57 @@ function getUserProfileData() {
 }
 
 function like() {
-    likedArray.push(therapist)
 
-    if (JSON.stringify(therapist) === JSON.stringify(matches)) {
-        console.log("You have a match")
-    }
+    matchesArray.forEach(match => {
 
-    console.log(therapist)
-    console.log(matches)
+        if (matches === 0 && JSON.stringify(therapist) === JSON.stringify(match)) {
+            matches++
+            console.log("You have a match")
+            setTimeout(function () {
 
-    if (therapistArray.length > 0) {
-        newNew++
-        therapist = thePer()
-        render()
-    }
+                document.getElementById('therapist-card').innerHTML = `
+                    <img src="images/match.png">
+                `
+            }, 100)
+        } else if (matches > 0) {
+            newNew++
+            therapist = thePer()
+            render()
+            matches = 0
+        } else if (therapistArray.length > 0) {
+            setTimeout(function () {
+
+                document.getElementById('therapist-card').innerHTML = `
+                    <img src="images/like.png">
+                `
+            }, 100)
+            setTimeout(function () {
+                newNew++
+                therapist = thePer()
+                render()
+            }, 1000)
+
+        }
+    })
 }
 
 
 
 function dislike() {
-    dislikedArray.push(therapist)
-    console.log(likedArray)
-    console.log(dislikedArray)
+
     if (therapistArray.length > 0) {
-        newNew++
-        therapist = thePer()
-        render()
+        setTimeout(function () {
+
+            document.getElementById('therapist-card').innerHTML = `
+                <img src="images/nope.png">
+            `
+        }, 100)
+        setTimeout(function () {
+            newNew++
+            therapist = thePer()
+            render()
+        }, 1000)
+
     }
 }
 

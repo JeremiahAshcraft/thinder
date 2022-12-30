@@ -10,7 +10,7 @@ class Therapist {
         const { name, picture, yearsExperience, specialties, acceptingNewPatients } = this
         return `
             
-            <div class="therapist-card" style="background-image: url('${picture}');>
+            <div class="therapist-card" id="therapist-card" style="background-image: url('${picture}');>
                 
                     <h3 class="name">${name}</h3>
                     <p class="years-experience">Practicing ${yearsExperience} years</p>
