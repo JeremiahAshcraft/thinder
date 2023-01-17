@@ -87,12 +87,15 @@ function goBack() {
 function profile() {
     document.getElementById('therapist').style.display = 'none'
     document.getElementById('thinder-profile').style.display = 'initial'
+    document.getElementById('action-btns').classList.add('action-donts')
     renderUser()
 }
 
 function therapists() {
     document.getElementById('thinder-profile').style.display = 'none'
     document.getElementById('therapist').style.display = 'initial'
+    document.getElementById('action-btns').classList.remove('action-donts')
+
     render()
 }
 
@@ -100,6 +103,7 @@ function messages() {
     document.getElementById('therapist').style.display = 'none'
     document.getElementById('thinder-profile').style.display = 'none'
     document.getElementById('thinder-messages').style.display = 'initial'
+    document.getElementById('action-btns').classList.add('action-donts')
     renderMessages()
 }
 

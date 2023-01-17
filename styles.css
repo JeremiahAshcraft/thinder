@@ -90,10 +90,13 @@ nav .btn,
     justify-content: center;
 }
 
+.action-donts {
+    visibility: hidden;
+}
+
 .action-btns .btn {
     font-size: 4.5rem;
 }
-
 
 .container {
     max-width: 25em;
