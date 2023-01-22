@@ -11,7 +11,7 @@ class User {
         return `
             
             <div class="user-profile-card">
-                    <img src="">
+                    <img class="profile-icon" src="./images/profilepic.svg">
                     <h3 class="user-profile-name">${name}</h3>
                     <p class="years-experience">${about}</p>
                 

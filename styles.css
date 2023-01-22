@@ -119,8 +119,6 @@ nav .btn,
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 70vh;
-    width: 21.88em;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,13 +126,18 @@ nav .btn,
 }
 
 .therapist-card,
-.user-profile-card {
+.user-profile-card,
+.message-card {
     display: flex;
     flex-direction: column;
-
     height: 70vh;
     width: 21.88em;
+}
 
+.user-profile-card {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .name,
@@ -159,7 +162,9 @@ nav .btn,
     visibility: hidden;
 }
 
-
+.profile-icon {
+    width: 10em;
+}
 
 #thinder-sign-up,
 #thinder-profile,
