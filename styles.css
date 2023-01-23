@@ -122,7 +122,6 @@ nav .btn,
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 0 0 1em 1em;
 }
 
 .therapist-card,
@@ -132,6 +131,7 @@ nav .btn,
     flex-direction: column;
     height: 70vh;
     width: 21.88em;
+    padding: .5em;
 }
 
 .user-profile-card {
